@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.barryliu.newspager.fragment.NewsFragment">
+
+    <!-- 上面的选项卡部分 -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        >
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/rg_indictor"
+            >
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="头条" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新闻" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="经济" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="深度" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="观点" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="视觉" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="湘江" />
+
+            <RadioButton
+                style="@style/rb_news_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="湖南映像" />
+        </RadioGroup>
+
+    </HorizontalScrollView>
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="新闻页面" />
+
+
+</LinearLayout>

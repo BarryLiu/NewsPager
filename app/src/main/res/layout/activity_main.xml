@@ -1,16 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="io.barryliu.newspager.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!--上方的toolBar部分 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+
+        >
+        <!--左边的图表-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_topbar_leftIcon"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_a1"
+            />
+
+
+
+        <!--右边的图表-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_topbar_rightIcon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_a2"
+            />
+
+        <!--中间边的图表-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/iv_topbar_centerIcon"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/iv_topbar_leftIcon"
+            android:layout_toLeftOf="@id/iv_topbar_rightIcon"
+            android:layout_centerVertical="true"
+            android:src="@drawable/logo"
+            />
+    </RelativeLayout>
+
+    <!--直线-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#929292"
+         />
+
+    <!--下方的选项卡部分-->
+    <!--内容-->
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:id="@+id/realcontent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            >
+        </FrameLayout>
+        <android.support.v4.app.FragmentTabHost
+            android:id="@+id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v4.app.FragmentTabHost>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

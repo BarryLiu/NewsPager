@@ -9,8 +9,16 @@
         android:layout_width="match_parent"
         android:id="@+id/vp"
         android:layout_height="match_parent">
-
-
     </android.support.v4.view.ViewPager>
+
+    <io.barryliu.newspager.view.IndicateView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_guider"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        />
+
 
 </RelativeLayout>

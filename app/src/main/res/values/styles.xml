@@ -20,4 +20,14 @@
     <style name="AppTheme1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme1.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- RadioButton 的style -->
+    <style name="rb_news_style" >
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">10dp</item>
+        
+        <item name="android:background">@drawable/radiobutton_bg</item>
+    </style>
 </resources>

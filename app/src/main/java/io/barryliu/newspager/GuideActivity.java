@@ -2,6 +2,7 @@ package io.barryliu.newspager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,9 +13,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-public class GuideActivity extends AppCompatActivity {
+import io.barryliu.newspager.lisenter.OnJumpLisenter;
+import io.barryliu.newspager.view.Contacts;
+import io.barryliu.newspager.view.IndicateView;
+
+/**
+ * 向导页面： 只有软件第一次用的时候会有向导页面，进入后会生成一个 Contacts.first对应的值的xml文件
+ */
+public class GuideActivity extends AppCompatActivity implements OnJumpLisenter {
     ViewPager vp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +44,25 @@ public class GuideActivity extends AppCompatActivity {
                 return 3;
             }
         });
+
+        final IndicateView ivView = (IndicateView) findViewById(R.id.iv_guider);
+        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                ivView.setCurrentPosition(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         getIntent();
     }
     public static int []  imageIds = {
@@ -41,6 +70,24 @@ public class GuideActivity extends AppCompatActivity {
             R.drawable.page2,
             R.drawable.page3
     };
+
+    static OnJumpLisenter jumpLisenter ;
+    @Override
+    public void jump() {
+        Intent intent =new Intent(this,MainActivity.class);
+
+
+        SharedPreferences preferences = getSharedPreferences(Contacts.first, MODE_PRIVATE);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putBoolean(Contacts.TagIsFirst, true);
+        edit.apply();
+
+
+        startActivity(intent);
+        finish();
+    }
+
+
     //创建一个Fragment的类
     public static class SectionFragment extends Fragment{
 
@@ -64,6 +111,21 @@ public class GuideActivity extends AppCompatActivity {
             //找到imageView
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_guider);
             imageView.setImageResource(imageIds[position]);
+
+            //显示button按钮
+            if(position == IndicateView.number-1){
+                Button btnGuider = (Button) view.findViewById(R.id.btn_guider);
+                btnGuider.setVisibility(View.VISIBLE);
+
+                btnGuider.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        jumpLisenter = (OnJumpLisenter) getActivity();
+
+                        jumpLisenter.jump();
+                    }
+                });
+            }
 
             return view;
         }

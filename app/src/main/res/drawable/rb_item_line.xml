@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--RadioButton 下面的线条 -->
+    <item >
+        <shape>
+            <solid android:color="@color/colorAccent"></solid>
+        </shape>
+    </item>
+    <item
+        android:bottom="4dp">
+        <shape>
+            <solid android:color="@color/colorWhite"></solid>
+        </shape>
+    </item>
+</layer-list>
