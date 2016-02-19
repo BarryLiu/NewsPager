@@ -4,9 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -63,17 +66,88 @@ public class NewsFragment extends Fragment {
         }
     }
 
+    View fragmentView ;
+    ViewPager mViewPager;
+    RadioGroup rg ;
+
+    HorizontalScrollView hsv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.fragment_news, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_news, null);
-        RadioGroup rg = (RadioGroup) view.findViewById(R.id.rg_indictor);
+          fragmentView = inflater.inflate(R.layout.fragment_news, null);
+          rg = (RadioGroup) fragmentView.findViewById(R.id.rg_indictor);
+         hsv  = (HorizontalScrollView) fragmentView.findViewById(R.id.hsv);
+
         RadioButton rbtn = (RadioButton) rg.getChildAt(0);
         rbtn.setChecked(true);
 
-        return view;
+
+        initViewPager();
+
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                for (int i = 0; i < rg.getChildCount(); i++) {
+                    if(rg.getChildAt(i).getId()==checkedId)
+                       mViewPager.setCurrentItem(i);
+                }
+            }
+        });
+
+        return fragmentView;
+    }
+
+    private void initViewPager() {
+          mViewPager = (ViewPager) fragmentView.findViewById(R.id.vp);
+
+        mViewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+
+                return new HeadFragment();
+            }
+
+            @Override
+            public int getCount() {
+                return 7;
+            }
+
+        });
+        //当页面选各种 的时候
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+                RadioButton rbCurrent = (RadioButton) rg.getChildAt(position);
+                rbCurrent.setChecked(true);
+
+                //计算宽度
+                int buttonWidth=0;
+                for(int i=0;i<position;i++){
+                    RadioButton rb = (RadioButton) rg.getChildAt(position);
+
+                    buttonWidth +=rb.getWidth();
+                }
+
+
+                int pageWidth = buttonWidth - (hsv.getWidth()-rbCurrent.getWidth())/2;
+//                hsv.scrollTo((buttonWidth-mViewPager.getWidth()/2)/2,0);
+                hsv.scrollTo(pageWidth,0);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
