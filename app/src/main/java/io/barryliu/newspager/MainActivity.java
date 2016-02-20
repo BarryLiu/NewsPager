@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         initTabhost();
     }
 
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         //初始化tabhost
         tabHost.setup(this,getSupportFragmentManager(),R.id.realcontent);
 
-        //创建选修课
+        //创建选项卡
         for(int i=0;i<4;i++){
             //根据标签创建tabhost
             TabHost.TabSpec tabSpec = tabHost.newTabSpec(i+"");
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             tabSpec.setIndicator(itemView);
           //tabSpec.setIndicator("第"+i+"页");
 
-            //
+            //绑定到tabhost中
              tabHost.addTab(tabSpec, NewsFragment.class,null);
 
         }

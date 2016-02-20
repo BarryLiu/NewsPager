@@ -90,8 +90,9 @@ public class NewsFragment extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 for (int i = 0; i < rg.getChildCount(); i++) {
-                    if(rg.getChildAt(i).getId()==checkedId)
-                       mViewPager.setCurrentItem(i);
+                    if(rg.getChildAt(i).getId()==checkedId){
+                        mViewPager.setCurrentItem(i);
+                    }
                 }
             }
         });
@@ -100,7 +101,7 @@ public class NewsFragment extends Fragment {
     }
 
     private void initViewPager() {
-          mViewPager = (ViewPager) fragmentView.findViewById(R.id.vp);
+        mViewPager = (ViewPager) fragmentView.findViewById(R.id.vp);
 
         mViewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
@@ -115,11 +116,15 @@ public class NewsFragment extends Fragment {
             }
 
         });
-        //当页面选各种 的时候
+
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
+
+            }
+            //当页面选各种 的时候
+            @Override
+            public void onPageSelected(int position) {
                 RadioButton rbCurrent = (RadioButton) rg.getChildAt(position);
                 rbCurrent.setChecked(true);
 
@@ -135,11 +140,6 @@ public class NewsFragment extends Fragment {
                 int pageWidth = buttonWidth - (hsv.getWidth()-rbCurrent.getWidth())/2;
 //                hsv.scrollTo((buttonWidth-mViewPager.getWidth()/2)/2,0);
                 hsv.scrollTo(pageWidth,0);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
             }
 
             @Override
