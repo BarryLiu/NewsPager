@@ -6,9 +6,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import io.barryliu.newspager.lisenter.OnJumpLisenter;
-import io.barryliu.newspager.view.Contacts;
-
 public class SplashActivity extends AppCompatActivity{
 
     Handler handler =new Handler();

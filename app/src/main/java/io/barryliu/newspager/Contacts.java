@@ -1,4 +1,4 @@
-package io.barryliu.newspager.view;
+package io.barryliu.newspager;
 
 import io.barryliu.newspager.R;
 
@@ -21,6 +21,20 @@ public class Contacts {
             R.drawable.pager_item_icon_bg,
             R.drawable.watch_item_icon_bg,
             R.drawable.police_item_icon_bg
+
+    };
+
+
+
+    public static final  int [] icon_slide={
+        R.drawable.icon_a19,
+        R.drawable.icon_a20,
+        R.drawable.icon_a21,
+        R.drawable.icon_a22,
+        R.drawable.icon_a23
+    };
+    public static  final String [] icon_slide_name= {
+            "清除缓存", "中小板指", "aaaa", "关于我们", "商务合作"
     };
 
 }

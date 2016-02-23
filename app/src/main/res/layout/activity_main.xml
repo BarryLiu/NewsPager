@@ -1,84 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="io.barryliu.newspager.MainActivity">
-
-    <!--上方的toolBar部分 -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-        <!--左边的图表-->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/iv_topbar_leftIcon"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon_a1"
-            />
 
 
+    >
 
-        <!--右边的图表-->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/iv_topbar_rightIcon"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon_a2"
-            />
 
-        <!--中间边的图表-->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:id="@+id/iv_topbar_centerIcon"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/iv_topbar_leftIcon"
-            android:layout_toLeftOf="@id/iv_topbar_rightIcon"
-            android:layout_centerVertical="true"
-            android:src="@drawable/logo"
-            />
-    </RelativeLayout>
-
-    <!--直线-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#929292"
-         />
-
-    <!--下方的选项卡部分-->
-    <!--内容-->
-
-    <LinearLayout
-
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        tools:context="io.barryliu.newspager.MainActivity">
 
-        <FrameLayout
-            android:id="@+id/realcontent"
-            android:layout_weight="1"
-            android:layout_height="0dp"
+        <!--上方的toolBar部分 -->
+        <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
             >
-        </FrameLayout>
-        <android.support.v4.app.FragmentTabHost
-            android:id="@+id/tabhost"
+            <!--左边的图表-->
+            <ImageView
+                android:id="@+id/iv_topbar_leftIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:onClick="showSlideMenu"
+                android:src="@drawable/icon_a1" />
+
+
+            <!--右边的图表-->
+            <ImageView
+                android:id="@+id/iv_topbar_rightIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_a2" />
+
+            <!--中间边的图表-->
+            <ImageView
+                android:id="@+id/iv_topbar_centerIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_topbar_rightIcon"
+                android:layout_toRightOf="@id/iv_topbar_leftIcon"
+                android:src="@drawable/logo" />
+        </RelativeLayout>
+
+        <!--直线-->
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v4.app.FragmentTabHost>
+            android:layout_height="1dp"
+            android:background="#929292" />
+
+        <!--下方的选项卡部分-->
+        <!--内容-->
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/realcontent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"></FrameLayout>
+
+            <android.support.v4.app.FragmentTabHost
+                android:id="@+id/tabhost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v4.app.FragmentTabHost>
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-
-
-</LinearLayout>
+    <FrameLayout
+        android:background="#c333"
+        android:alpha="0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fl_main"></FrameLayout>
+</FrameLayout>
