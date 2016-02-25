@@ -127,7 +127,7 @@ public class UIUtils {
         return getResources(context).getColorStateList(resId);
     }
 
-    private static void showToast(Context context, String str) {
+    public static void showToast(Context context, String str) {
         if (toast == null) {
             toast = Toast.makeText(context, str, Toast.LENGTH_SHORT);
         } else {
@@ -136,9 +136,6 @@ public class UIUtils {
         }
         toast.show();
     }
-
-
-
 }
 
 

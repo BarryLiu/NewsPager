@@ -3,10 +3,15 @@ package io.barryliu.newspager;
 import io.barryliu.newspager.R;
 
 /**
+ *  一些基本的参数
  * Created by Barry on 2016/2/17.
  *
  */
 public class Contacts {
+    //网络访问地址
+    public final static String httpHost="http://192.168.8.14:8080/Http1/";
+    public static  final String httpPath="http://192.168.8.14:8080/Http1/json/news.json";
+
     //第一次登陆向导的配置
     public final static String first="first";
     public final static String TagIsFirst="is First";

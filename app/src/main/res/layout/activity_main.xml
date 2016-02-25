@@ -43,20 +43,18 @@
             <ImageView
                 android:id="@+id/iv_topbar_centerIcon"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/iv_topbar_rightIcon"
                 android:layout_toRightOf="@id/iv_topbar_leftIcon"
                 android:src="@drawable/logo" />
         </RelativeLayout>
-
         <!--直线-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#929292" />
-
         <!--下方的选项卡部分-->
         <!--内容-->
 
